@@ -21971,6 +21971,13 @@
 	  }
 	
 	  _createClass(App, [{
+	    key: 'addBook',
+	    value: function addBook(author, rating, title) {
+	      this.props.books.push({
+	        author: author, rating: rating, title: title
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -21981,15 +21988,22 @@
 	          null,
 	          'BookClub'
 	        ),
+	        this.addBook("yep", "35", "hello"),
 	        _react2.default.createElement(
 	          'form',
 	          null,
 	          'Title: ',
-	          _react2.default.createElement('input', { type: 'text', title: 'Title' }),
+	          _react2.default.createElement('input', { type: 'text', name: 'Title' }),
 	          'Author: ',
-	          _react2.default.createElement('input', { type: 'text', author: 'Author' }),
+	          _react2.default.createElement('input', { type: 'text', name: 'Author' }),
 	          'Rating: ',
-	          _react2.default.createElement('input', { type: 'integer', value: '' })
+	          _react2.default.createElement('input', { type: 'integer', name: 'rating' }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'button',
+	            { onclick: 'this.addBook(\'hello\', \'hey\', \'yep\')' },
+	            'Submit'
+	          )
 	        ),
 	        _react2.default.createElement(Booklist, { books: this.props.books })
 	      );
@@ -21998,6 +22012,8 @@
 	
 	  return App;
 	}(_react.Component);
+	
+	// addBook("test", "10", "test")
 	
 	var Booklist = function Booklist(props) {
 	  return _react2.default.createElement(
