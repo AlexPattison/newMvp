@@ -5,6 +5,6 @@ var mongoose = require('../db/mongooseTest.js')
 
 app.use(express.static(__dirname + '/../client/'))
 
-app.listen(5000, function() {
+app.listen(4000, function() {
   console.log('The server is running dude!!!!')
 })

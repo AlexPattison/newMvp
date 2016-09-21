@@ -1,10 +1,26 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>React.js using NPM, Babel6 and Webpack</title>
+    <title>BookClub</title>
   </head>
   <body>
     <div id="app" />
     <script src="public/bundle.js" type="text/javascript"></script>
+    <!-- <script>
+      function handleResponse(response) {
+      for (var i = 0; i < response.items.length; i++) {
+        var item = response.items[i];
+        // in production code, item.text should have the HTML entities escaped.
+        document.getElementById("app").innerHTML += "<br>" + "<img src=" + item.volumeInfo.imageLinks.thumbnail + ">";
+      }
+    }
+    </script>
+    <script>
+      function handleQuery(bookTitle) {
+        var titleArray = bookTitle.split(' ');
+        return titleArray.join('+');
+      };
+    </script> -->
+    <!-- <script src="https://www.googleapis.com/books/v1/volumes?q=`${handleQuery('Sometimes a Great Notion')}`&callback=handleResponse"></script> -->
   </body>
 </html>

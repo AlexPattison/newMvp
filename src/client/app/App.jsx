@@ -2,26 +2,49 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
-  addBook(author, rating, title) {
-    this.props.books.push({
-      author: author, rating: rating, title: title
-    })
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: 'Starting text',
+      name: 'Bob'
+    }
   }
+
+
+  // handleResponse(response) {
+  // for (var i = 0; i < response.items.length; i++) {
+  //   var item = response.items[i];
+  //   // in production code, item.text should have the HTML entities escaped.
+  //   document.getElementById("content").innerHTML += "<br>" + "<img src=" + item.volumeInfo.imageLinks.thumbnail + ">";
+  // }
+
+  // function handleQuery(bookTitle) {
+  //   var titleArray = bookTitle.split(' ');
+  //   return titleArray.join('+');
+  // };
+  // <script src="https://www.googleapis.com/books/v1/volumes?q=`${handleQuery('Sometimes a Great Notion')}`&callback=handleResponse"></script>
+
+  // addBook(author, rating, title) {
+  //   this.state.books.push({
+  //     author: author, rating: rating, title: title
+  //   })
+  // }
 
   render() {
     return (
 
       <div>
         <h1>BookClub</h1>
-        {this.addBook("yep", "35", "hello")}
+          State: <p>{this.state.text}</p>
         <form>
         {/* What action do I need here? Where should this go? */}
         {/* Every input needs a name. submit button will handle post request */}
+
           Title: <input type="text" name="Title" />
           Author: <input type="text" name="Author" />
           Rating: <input type="integer" name="rating" />
           <br/>
-          <button onclick="this.addBook('hello', 'hey', 'yep')">Submit</button>
+          <button onClick="this.addBook('hello', 'hey', 'yep')">Submit</button>
         </form>
         <Booklist books={this.props.books} />
       </div>
@@ -44,9 +67,9 @@ const Booklist = (props) => (
 
 const BookListEntry = (props) => (
   <tr>
-    <td>{props.book.author}</td>
-    <td>{props.book.title}</td>
-    <td>{props.book.rating}</td>
+    <td><img src={props.book.items[0].volumeInfo.imageLinks.thumbnail}/></td>
+    <td style={{paddingRight: 10}}>{props.book.items[0].volumeInfo.title}</td>
+    <td>{props.book.items[0].volumeInfo.authors[0]}</td>
   </tr>
 )
 
