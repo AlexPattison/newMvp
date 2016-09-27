@@ -22193,8 +22193,7 @@
 	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 	
 	    _this.state = {
-	      text: 'Starting text',
-	      name: 'Bob'
+	      books: [_this.props.books]
 	    };
 	    return _this;
 	  }
@@ -22212,18 +22211,20 @@
 	  // };
 	  // <script src="https://www.googleapis.com/books/v1/volumes?q=`${handleQuery('Sometimes a Great Notion')}`&callback=handleResponse"></script>
 	
-	  // addBook(author, rating, title) {
-	  //   this.state.books.push({
-	  //     author: author, rating: rating, title: title
-	  //   })
-	  // }
-	
 	  _createClass(App, [{
+	    key: 'addBook',
+	    value: function addBook(author, rating, title) {
+	      this.state.books.push({
+	        author: author, rating: rating, title: title
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
 	        null,
+	        console.log('STATE: ', this.state),
 	        _react2.default.createElement(
 	          'h1',
 	          null,
@@ -22244,12 +22245,7 @@
 	          _react2.default.createElement('input', { type: 'text', name: 'Author' }),
 	          'Rating: ',
 	          _react2.default.createElement('input', { type: 'integer', name: 'rating' }),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement(
-	            'button',
-	            { onClick: 'this.addBook(\'hello\', \'hey\', \'yep\')' },
-	            'Submit'
-	          )
+	          _react2.default.createElement('br', null)
 	        ),
 	        _react2.default.createElement(Booklist, { books: this.props.books })
 	      );

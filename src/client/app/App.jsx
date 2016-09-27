@@ -5,8 +5,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: 'Starting text',
-      name: 'Bob'
+      books: [this.props.books]
     }
   }
 
@@ -24,16 +23,18 @@ class App extends Component {
   // };
   // <script src="https://www.googleapis.com/books/v1/volumes?q=`${handleQuery('Sometimes a Great Notion')}`&callback=handleResponse"></script>
 
-  // addBook(author, rating, title) {
-  //   this.state.books.push({
-  //     author: author, rating: rating, title: title
-  //   })
-  // }
+  addBook(author, rating, title) {
+    this.state.books.push({
+      author: author, rating: rating, title: title
+    })
+  }
 
   render() {
     return (
 
+
       <div>
+      {console.log('STATE: ', this.state)}
         <h1>BookClub</h1>
           State: <p>{this.state.text}</p>
         <form>
@@ -44,7 +45,6 @@ class App extends Component {
           Author: <input type="text" name="Author" />
           Rating: <input type="integer" name="rating" />
           <br/>
-          <button onClick="this.addBook('hello', 'hey', 'yep')">Submit</button>
         </form>
         <Booklist books={this.props.books} />
       </div>
