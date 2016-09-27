@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
-import Books from '../../../data/books.js'
+import BOOKS from '../../../data/books.js'
 
 // import './index.css';
 

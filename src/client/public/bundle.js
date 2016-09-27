@@ -69,7 +69,7 @@
 	
 	// import './index.css';
 	
-	_reactDom2.default.render(_react2.default.createElement(_App2.default, { books: BOOKS }), document.getElementById('app'));
+	_reactDom2.default.render(_react2.default.createElement(_App2.default, { books: _books2.default }), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -22093,7 +22093,9 @@
 
 	'use strict';
 	
-	var BOOKS = [
+	export const BOOKS = Math.sqrt;
+	
+	[
 	{
 	 "kind": "books#volumes",
 	 "totalItems": 1,
