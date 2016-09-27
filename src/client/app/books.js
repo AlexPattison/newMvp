@@ -1,8 +1,6 @@
 'use strict';
 
-export const BOOKS = Math.sqrt;
-
-[
+export const books = [
 {
  "kind": "books#volumes",
  "totalItems": 1,
@@ -259,5 +257,3 @@ export const BOOKS = Math.sqrt;
  ]
 }
 ];
-
-export default Books;

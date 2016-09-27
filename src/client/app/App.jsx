@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+// import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -35,6 +35,7 @@ class App extends Component {
 
       <div>
       {console.log('STATE: ', this.state)}
+      {console.log('PROPS: ', this.props)}
         <h1>BookClub</h1>
           State: <p>{this.state.text}</p>
         <form>

@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
-import BOOKS from '../../../data/books.js'
+import books from 'books'
 
-// import './index.css';
+console.log(books);
+
+
 
 ReactDOM.render(
-  <App books={BOOKS}/>,
+  <App books={books}/>,
   document.getElementById('app')
 );
