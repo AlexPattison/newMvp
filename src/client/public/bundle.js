@@ -65,7 +65,7 @@
 	
 	// import './index.css';
 	
-	_reactDom2.default.render(_react2.default.createElement(_App2.default, { books: BOOKS }), document.getElementById('app'));
+	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -21973,9 +21973,8 @@
 	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 	
 	    _this.state = {
-	      books: _this.props.books,
-	      hello: "hello",
-	      isbn: ""
+	      books: [],
+	      isbn: ''
 	    };
 	    return _this;
 	  }
@@ -21983,7 +21982,16 @@
 	  _createClass(App, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      _axios2.default.get();
+	      var context = this;
+	      _axios2.default.get('/api/').then(function (response) {
+	        console.log(response);
+	        console.log(this);
+	        console.log('Response.data: ', response.date);
+	        context.setState({ books: response.data });
+	        console.log(context.state);
+	      }).catch(function (error) {
+	        console.log(error);
+	      });
 	    }
 	  }, {
 	    key: 'handleSubmit',
@@ -22036,6 +22044,7 @@
 	  return _react2.default.createElement(
 	    'table',
 	    null,
+	    console.log(props.books),
 	    _react2.default.createElement(
 	      'tbody',
 	      null,

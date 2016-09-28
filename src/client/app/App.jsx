@@ -6,14 +6,24 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: this.props.books,
-      hello: "hello",
-      isbn: ""
+      books: [],
+      isbn: ''
     }
   }
 
   componentWillMount() {
-    axios.get()
+    var context = this;
+    axios.get('/api/')
+      .then(function (response) {
+        console.log(response);
+        console.log(this);
+        console.log('Response.data: ', response.date)
+        context.setState({books: response.data});
+        console.log(context.state);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   handleSubmit(event) {
@@ -52,15 +62,11 @@ class App extends Component {
       </div>
     );
   }
-
-
-
-
-
 }
 
 const Booklist = (props) => (
   <table>
+  {console.log(props.books)}
     <tbody>
       {props.books.map(function(book) {
         return <BookListEntry book={book} />

@@ -5,5 +5,10 @@ mongoose.connect(mongoUri);
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error'));
+db.once('open', function() {
 
-exports = db;
+});
+
+module.exports = db;
+
+// Where is the db being exported to?

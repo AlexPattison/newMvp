@@ -4,6 +4,6 @@ import App from './App.jsx';
 // import './index.css';
 
 ReactDOM.render(
-  <App books={BOOKS}/>,
+  <App />,
   document.getElementById('app')
 );
