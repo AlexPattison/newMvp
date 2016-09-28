@@ -1,66 +1,66 @@
 import React, { Component } from 'react';
 import './App.css';
+import axios from 'axios';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: [this.props.books]
+      books: this.props.books,
+      hello: "hello",
+      isbn: ""
     }
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log(event)
+    var context = this;
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${this.state.isbn}`)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function(book) {
+        context.setState({books: [book].concat(context.state.books)});
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
-  // handleResponse(response) {
-  // for (var i = 0; i < response.items.length; i++) {
-  //   var item = response.items[i];
-  //   // in production code, item.text should have the HTML entities escaped.
-  //   document.getElementById("content").innerHTML += "<br>" + "<img src=" + item.volumeInfo.imageLinks.thumbnail + ">";
-  // }
-
-  // function handleQuery(bookTitle) {
-  //   var titleArray = bookTitle.split(' ');
-  //   return titleArray.join('+');
-  // };
-  // <script src="https://www.googleapis.com/books/v1/volumes?q=`${handleQuery('Sometimes a Great Notion')}`&callback=handleResponse"></script>
-
-  addBook(author, rating, title) {
-    this.state.books.push({
-      author: author, rating: rating, title: title
-    })
+  onInputChange(event) {
+    console.log(event.target.value);
+    this.setState({isbn: event.target.value})
   }
 
   render() {
     return (
 
-
       <div>
-      {console.log('STATE: ', this.state)}
         <h1>BookClub</h1>
-          State: <p>{this.state.text}</p>
-        <form>
-        {/* What action do I need here? Where should this go? */}
-        {/* Every input needs a name. submit button will handle post request */}
-
-          Title: <input type="text" name="Title" />
-          Author: <input type="text" name="Author" />
-          Rating: <input type="integer" name="rating" />
+        <form onSubmit={this.handleSubmit.bind(this)}>
+          ISBN: <input type="string" name="isbn" onChange={this.onInputChange.bind(this)} value={this.state.isbn} />
+          <input type="submit" name="Save" />
           <br/>
+
         </form>
-        <Booklist books={this.props.books} />
+        <Booklist books={this.state.books} />
       </div>
     );
   }
 
 
-}
 
-// addBook("test", "10", "test")
+
+
+}
 
 const Booklist = (props) => (
   <table>
     <tbody>
       {props.books.map(function(book) {
-        return <BookListEntry book={book} />})}
+        return <BookListEntry book={book} />
+      })}
     </tbody>
   </table>
 )
