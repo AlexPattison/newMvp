@@ -12,6 +12,10 @@ class App extends Component {
     }
   }
 
+  componentWillMount() {
+    axios.get()
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     console.log(event)

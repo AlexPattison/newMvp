@@ -9,3 +9,14 @@ exports.createOne = function(req, res) {
     }
   });
 }
+
+exports.retrieve = function(req, res) {
+  Book.find({}, function(err, docs) {
+    if (err) {
+      console.log(err);
+      res.send();
+    } else {
+      res.send(docs);
+    }
+  });
+}

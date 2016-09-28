@@ -14,4 +14,4 @@ app.listen(4000, function() {
 var booksRouter = require('./resources/books/booksRouter');
 console.log(booksRouter);
 
-app.use('/', booksRouter);
+app.use('/api/', booksRouter);
