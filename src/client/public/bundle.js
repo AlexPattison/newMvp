@@ -22283,6 +22283,11 @@
 	      'td',
 	      null,
 	      props.book.items[0].volumeInfo.authors[0]
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      props.book.items[0].volumeInfo.description
 	    )
 	  );
 	};

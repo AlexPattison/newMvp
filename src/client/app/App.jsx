@@ -70,6 +70,7 @@ const BookListEntry = (props) => (
     <td><img src={props.book.items[0].volumeInfo.imageLinks.thumbnail}/></td>
     <td style={{paddingRight: 10}}>{props.book.items[0].volumeInfo.title}</td>
     <td>{props.book.items[0].volumeInfo.authors[0]}</td>
+    <td>{props.book.items[0].volumeInfo.description}</td>
   </tr>
 )
 
