@@ -1,4 +1,4 @@
-var Books = require('./Books');
+var Book = require('./Book');
 
 exports.createOne = function(req, res) {
   Book.create(req.body, function(err, doc) {
@@ -7,5 +7,5 @@ exports.createOne = function(req, res) {
     } else {
       res.send(doc);
     }
-  }
+  });
 }
